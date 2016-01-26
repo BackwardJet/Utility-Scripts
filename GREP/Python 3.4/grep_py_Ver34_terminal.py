@@ -1,8 +1,8 @@
 import os
+import sys
 
-
-rootdir = input('Name of root directory: ')
-input_str = input('String to search for: ')
+rootdir = sys.argv[1] #input('Name of root directory: ')
+input_str = sys.argv[2] #input('String to search for: ')
 
 files_with_str = []
 for root, subFolders, files in os.walk(rootdir):
