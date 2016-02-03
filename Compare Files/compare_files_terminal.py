@@ -13,7 +13,7 @@ with open(f2) as file2_read:
 def compare():
     if (len(file1) != len(file2)):
         print('NOT EQUAL: The files do not have the same number of lines.')
-        #return
+        return
     for i in range(len(file1)):
         line1_f1 = file1[i]
         line1_f2 = file2[i]
