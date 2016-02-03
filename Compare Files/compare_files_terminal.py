@@ -1,27 +1,30 @@
 import sys
 
-f1 = sys.argv[1]#input('Name the first file you want to compare.\n')
-f2 = sys.argv[2]#input('Name of second file.\n')
-file1_read = open(f1, 'r')
-file2_read = open(f2, 'r')
+f1 = sys.argv[1]
+f2 = sys.argv[2]
 
-file1 = file1_read.readlines()
-file2 = file2_read.readlines()
+with open(f1) as file1_read:
+    file1 = file1_read.readlines()
 
-error_list = []
+with open(f2) as file2_read:
+    file2 = file2_read.readlines()
+
 
 def compare():
+    if (len(file1) != len(file2)):
+        print('NOT EQUAL: The files do not have the same number of lines.')
+        #return
     for i in range(len(file1)):
         line1_f1 = file1[i]
         line1_f2 = file2[i]
         if line1_f1 != line1_f2:
             print('ERROR: NOT EQUAL')
-            string_to_print = line1_f1 + '!=' + line1_f2
+            line1_f1 = '"' + ' '.join(line1_f1.split()) + '"'
+            line1_f2 = '"' + ' '.join(line1_f2.split()) + '"'
+            string_to_print = line1_f1 + ' != ' + line1_f2
             print(string_to_print)
-            error_list.append('Error')
-            break
-    if (len(error_list) == 0):
-        print('ALL EQUAL')
+            return
+    print('ALL EQUAL')
 
 if __name__ == '__main__':
     compare()
