@@ -1,4 +1,6 @@
+import sys
 import os
+
 if (sys.version_info >= (2,0) and sys.version_info < (3,0)):
     rootdir = raw_input('Name of root directory: ')
     input_str = raw_input('String to search for: ')
