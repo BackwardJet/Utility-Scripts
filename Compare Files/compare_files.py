@@ -1,7 +1,19 @@
-f1 = raw_input('Name the first file you want to compare.\n')
-f2 = raw_input('Name of second file.\n')
+import sys
+
+if (sys.version_info >= (2,0) and sys.version_info < (3,0)):
+    f1 = raw_input('Name the first file you want to compare.\n')
+    f2 = raw_input('Name of second file.\n')
+if (sys.version_info >= (3,0)):
+    f1 = input('Name the first file you want to compare.\n')
+    f2 = input('Name of second fileasdfasdf.\n')
+
+ 
+
+
 file1_read = open(f1, 'r')
 file2_read = open(f2, 'r')
+
+
 
 file1 = file1_read.readlines()
 file2 = file2_read.readlines()
