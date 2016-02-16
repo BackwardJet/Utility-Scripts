@@ -1,4 +1,10 @@
+import sys
+
 ALPHABET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+
+
+    
 
 def Caesar_encrypt(plaintext:str,key:int) -> str:
     '''takes in a string containing a message and a key.
@@ -30,4 +36,9 @@ def shifter(num:int) ->str:
 assert(Caesar_encrypt("Hi there", 29) == "Kl wkhuh")
 assert(Caesar_decrypt("Kl wkhuh", 3) == "Hi there")
 
-
+if (sys.argv[1].lower() == 'encrypt'):
+    print(Caesar_encrypt(sys.argv[2],eval(sys.argv[3])))
+elif (sys.argv[1].lower() == 'decrypt'):
+    print(Caesar_decrypt(sys.argv[2],eval(sys.argv[3])))
+else:
+    print('Please choose whether to decrypt or encrypt the string')
