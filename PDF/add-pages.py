@@ -1,22 +1,36 @@
+import sys
 import PyPDF2
 
-fileName = 'syllabus.pdf'#sys.argv[1]
+fileName = sys.argv[1]
 
-pdfFileObj = open(fileName, 'rb')
-pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-print(pdfReader.numPages)
 
-pdfWriter = PyPDF2.PdfFileWriter()
+def run():
+	if fileName[-4:] != '.pdf':
+		print('Error: Not a pdf file')
+	else: 
+		pdfFileObj = open(fileName, 'rb')
+		pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+		pageNumString = "The number of pages in the file is: " + str(pdfReader.numPages)
+		print(pageNumString)
 
-for pageNum in range(pdfReader.numPages):
-	pageObj = pdfReader.getPage(pageNum)	
-	pdfWriter.addPage(pageObj)
-	pdfWriter.addBlankPage()
+		pdfWriter = PyPDF2.PdfFileWriter()
 
-outputFileName = fileName[:-4]+'-pages-added.pdf'
-pdfOutputFile = open(outputFileName, 'wb')
+		for pageNum in range(pdfReader.numPages):
+			pageObj = pdfReader.getPage(pageNum)	
+			pdfWriter.addPage(pageObj)
+			pdfWriter.addBlankPage()
 
-pdfWriter.write(pdfOutputFile)
-pdfOutputFile.close()
+		outputFileName = fileName[:-4]+'-pages-added.pdf'
+		pdfOutputFile = open(outputFileName, 'wb')
 
-pdfFileObj.close()
+		pdfWriter.write(pdfOutputFile)
+		pdfOutputFile.close()
+
+		pdfFileObj.close()
+		
+		print('Blank pages have been added to your file!')
+		print('You will find the modified version of your file at ' + outputFileName)
+
+
+if __name__ == '__main__':
+	run()
